@@ -1,18 +1,6 @@
 import numpy as np
 
 '''
-Converts byte (uint8) array to short (uint16) array
-'''
-def upgrade(array):
-    return array.astype(np.dtype(np.uint16))
-
-'''
-Converts short array to byte array
-'''
-def downgrade(array):
-    return array.astype(np.dtype(np.uint8))
-
-'''
 Returns a list[list] of blocks (rectangular regions of the image) in row-major order (a list of rows of blocks).
 '''
 def chunk(image, dx = 16, dy = 16):
