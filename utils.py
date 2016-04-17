@@ -1,8 +1,14 @@
 import numpy as np
 
+'''
+Converts byte (uint8) array to short (uint16) array
+'''
 def upgrade(array):
     return array.astype(np.dtype(np.uint16))
 
+'''
+Converts short array to byte array
+'''
 def downgrade(array):
     return array.astype(np.dtype(np.uint8))
 
@@ -21,9 +27,9 @@ def chunk(image, dx = 16, dy = 16):
     blocks = [ [ image[row : maxrow(row), col : maxcol(col)] for col in range(0, image.shape[1], dx) ] for row in range(0, image.shape[0], dy) ]
     return blocks
 
-def pixel_to_block(color, x, y):
-    return np.tile(color, (y, x))
-
+'''
+Combines a list[list] of blocks back into a single image.
+'''
 def unchunk(blocks):
     # First combine the blocks into horizontal stripes
     # MUST be done horizontally first or width mismatch errors will occur!
@@ -31,3 +37,9 @@ def unchunk(blocks):
     # Then combine the stripes vertically
     image = np.concatenate(stripes, axis = 0)
     return image
+
+'''
+Creates an x*y image of the pixel 'color' tiled across the plane.
+'''
+def pixel_to_block(color, x, y):
+    return np.tile(color, (y, x, 1))
