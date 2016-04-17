@@ -1,4 +1,4 @@
-from sys import argv
+import sys
 
 class FileNotGivenError(Exception):
     def __init__(self, value):
@@ -11,7 +11,7 @@ def files():
     fname_in = None
     fname_out = None
     try:
-        args = iter(argv[1:])
+        args = iter(sys.argv[1:])
         while True:
             nxt = next(args)
             if nxt == '-i':
@@ -22,7 +22,8 @@ def files():
                 fname_in = nxt
     except StopIteration:
         if fname_in is None:
-            raise FileNotGivenError('I need a file name')
+            print('Usage: ./pixelate.py [-i] filename [-o filename]')
+            sys.exit(2)
         elif fname_out is None:
             index = fname_in.rfind('.')
             fname_out = fname_in[:index] + '-pxl8d' + fname_in[index:]
