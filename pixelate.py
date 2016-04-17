@@ -4,6 +4,7 @@ import numpy as np
 from scipy.misc import imread, imsave
 import cmd
 from utils import *
+from core import avg_color
 
 #define variable
 fin, fout = cmd.files()
@@ -18,9 +19,9 @@ print(image.shape)
 
 blocks = chunk(image)
 
-print(blocks[0][0].shape)
-print(blocks[-1][-1].shape)
+# Average the colors in place
+avg_color(blocks)
 
-# to test chunk() and unchunk(), reconstruct the original image
+# Reconstruct the original image with processed blocks
 reconstruct = unchunk(blocks)
 imsave(fout, reconstruct)
