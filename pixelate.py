@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-
+#import different libraries
 import numpy as np
 from scipy.misc import imread, imsave
 import cmd
-
 from utils import *
 
+#define variable
 fin, fout = cmd.files()
 
 print(fin)
