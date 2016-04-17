@@ -21,4 +21,6 @@ blocks = chunk(image)
 print(blocks[0][0].shape)
 print(blocks[-1][-1].shape)
 
-imsave(fout, blocks[len(blocks)//2][len(blocks[0])//2])
+# to test chunk() and unchunk(), reconstruct the original image
+reconstruct = unchunk(blocks)
+imsave(fout, reconstruct)
