@@ -25,6 +25,9 @@ def avg_color(blocks):
     temp = upgrade(blocks[0][0])
     # complete this function
 
+def pixel_to_block(color, x, y):
+    return np.tile(color, (y, x))
+
 def unchunk(blocks):
     # First combine the blocks into horizontal stripes
     # MUST be done horizontally first or width mismatch errors will occur!
