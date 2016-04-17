@@ -6,15 +6,14 @@ from error import FileNotGivenError
 fname_in = None
 fname_out = None
 
-args = iter(argv)
-
 try:
+    args = iter(argv[1:])
     while True:
-        nxt = args.next()
+        nxt = next(args)
         if nxt == '-i':
-            fname_in = args.next()
+            fname_in = next(args)
         elif nxt == '-o':
-            fname_out = args.next()
+            fname_out = next(args)
         else:
             fname_in = nxt
 except StopIteration:
@@ -23,3 +22,6 @@ except StopIteration:
     elif fname_out is None:
         index = fname_in.rfind('.')
         fname_out = fname_in[:index] + '-pxl8d' + fname_in[index:]
+
+print(fname_in)
+print(fname_out)
