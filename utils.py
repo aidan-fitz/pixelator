@@ -21,10 +21,6 @@ def chunk(image, dx = 16, dy = 16):
     blocks = [ [ image[row : maxrow(row), col : maxcol(col)] for col in range(0, image.shape[1], dx) ] for row in range(0, image.shape[0], dy) ]
     return blocks
 
-def avg_color(blocks):
-    temp = upgrade(blocks[0][0])
-    # complete this function
-
 def unchunk(blocks):
     # First combine the blocks into horizontal stripes
     # MUST be done horizontally first or width mismatch errors will occur!
