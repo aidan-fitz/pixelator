@@ -15,3 +15,10 @@ def chunk(array, dx = 16, dy = 16):
 
     blocks = [ [ array[row : maxrow(row), col : maxcol(col)] for col in range(0, array.shape[1], dx) ] for row in range(0, array.shape[0], dy) ]
     return blocks
+
+def avg_color(blocks):
+    temp = upgrade(blocks[0][0])
+    # complete this function
+
+def unchunk(blocks):
+    pass
